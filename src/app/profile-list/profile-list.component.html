@@ -1,0 +1,21 @@
+<form class="form-inline">
+  <input class="form-control" name="searchInput" placeholder="Search" #searchInput="ngModel" [(ngModel)]="searchText" style="width: 80%;">
+  <button class="btn btn-primary" (click)="searchText=''">Clear</button>
+</form>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- <ng-container *ngFor="let profile of profileArray"></ng-container> -->
+    <div class="col-md-4" *ngIf="filterCondition(profile)">
+      <img [src]="profile.photo">
+      <h2>{{profile.fullName}}</h2>
+      <h3>{{profile.age}}</h3>
+    </div>
+    <button class="btn btn-warning" (click)="profileService.populateForm(profile)">Edit</button>
+    <button class="btn btn-danger" (click)="onDelete(profile.$key)">Delete</button>
+  </div>
+</div>
+<hr>
+<div class="alert alert-danger" *ngIf="showDeletedMessage">
+  Deleted successfully.
+</div>
