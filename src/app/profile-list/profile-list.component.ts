@@ -29,7 +29,7 @@ export class ProfileListComponent implements OnInit {
     if (confirm('Are you sure to delete this record?')) {
       this.profileService.deleteProfile($key);
       this.showDeletedMessage = true;
-      setTimeout(() => this.showDeletedMessage = false, 3000);
+      setTimeout(() => this.showDeletedMessage = false, 4000);
     }
   }
 

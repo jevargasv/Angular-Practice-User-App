@@ -14,7 +14,7 @@ export class ProfileService {
         $key: new FormControl(null),
         fullName: new FormControl('', Validators.required),
         age: new FormControl('', [Validators.required, Validators.minLength(2)]),
-        photo: new FormControl('')
+        url: new FormControl('')
     });
 
     getProfiles() {
@@ -26,7 +26,7 @@ export class ProfileService {
         this.profileList.push({
             fullName: profile.fullName,
             age: profile.age,
-            photo: profile.photo
+            url: profile.url
         });
     }
 

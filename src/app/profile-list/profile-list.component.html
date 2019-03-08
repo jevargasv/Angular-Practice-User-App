@@ -1,21 +1,31 @@
 <form class="form-inline">
-  <input class="form-control" name="searchInput" placeholder="Search" #searchInput="ngModel" [(ngModel)]="searchText" style="width: 80%;">
+  <input class="form-control" name="searchInput" placeholder="Search" #searchInput="ngModel" [(ngModel)]="searchText" style="width: 90%;">
+  &nbsp; &nbsp;
   <button class="btn btn-primary" (click)="searchText=''">Clear</button>
 </form>
 
-<div class="container-fluid">
-  <div class="row">
-    <!-- <ng-container *ngFor="let profile of profileArray"></ng-container> -->
-    <div class="col-md-4" *ngIf="filterCondition(profile)">
-      <img [src]="profile.photo">
+<br>
+<div class="alert alert-info" style="width: 90%;" *ngIf="showSuccessMessage">
+    Submitted successfully.
+</div>
+<br>
+<ng-container *ngFor="let profile of profileArray">
+  <ng-container *ngIf="filterCondition(profile)">
+      <br>
+      <br>
+      <img [src]="profile.url" height="200" width="200">
+      <br>
+      <br>
       <h2>{{profile.fullName}}</h2>
       <h3>{{profile.age}}</h3>
-    </div>
+      <br>
     <button class="btn btn-warning" (click)="profileService.populateForm(profile)">Edit</button>
+    &nbsp; &nbsp;
     <button class="btn btn-danger" (click)="onDelete(profile.$key)">Delete</button>
-  </div>
-</div>
-<hr>
-<div class="alert alert-danger" *ngIf="showDeletedMessage">
+      <hr>
+  </ng-container>
+</ng-container>
+<div class="alert alert-danger" style="width: 100%;" *ngIf="showDeletedMessage">
   Deleted successfully.
 </div>
+
